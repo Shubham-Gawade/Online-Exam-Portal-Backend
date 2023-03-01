@@ -23,7 +23,7 @@ public class UserServiceImpl  implements UserService{
 	@Override
 	//Create new user
 	public User createUser(User user, List<UserRole> userRoles) throws Exception {
-		User existingUser = userRepository.findByUsername(user.getUsername());
+		User existingUser = userRepository.findByUserName(user.getUsername());
 		if(existingUser != null) {
 			throw new Exception("Username already exist.");
 		}else {
@@ -34,6 +34,12 @@ public class UserServiceImpl  implements UserService{
 			existingUser = userRepository.save(user);
 		}
 		return existingUser;
+	}
+	
+	@Override
+	//Get user
+	public User getUser(String username) throws Exception {
+		return userRepository.findByUserName(username);
 	}
 
 }

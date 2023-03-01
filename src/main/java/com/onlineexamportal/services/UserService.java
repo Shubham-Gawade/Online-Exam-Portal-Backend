@@ -9,4 +9,5 @@ public interface UserService {
 	
 	User createUser(User user, List<UserRole> userRoles) throws Exception;
 
+	User getUser(String username) throws Exception;
 }
